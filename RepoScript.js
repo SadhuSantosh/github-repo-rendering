@@ -4,47 +4,72 @@ console.log(username);
 
 
 window.onload=function getInitial(){
-    document.body.innerHTML=`
-    <div class="heading">
-      <img src="./assets/Icon.png" alt="Icon">
-        <div class="head">
-      <h3>Repo-Hub</h3>
-       </div>
-    <div class="Theme">
-      <p>Theme</p>
-      <p onclick="setSun()" class="sun far fa-sun sunenable">
-      </p>
-      <p onclick="setMoon()" class="moon fas fa-moon"></p>
-    </div>
-    </div>
-    <div class="rep container-fluid main">
-      <div class="row">
-            <div class="profile col-md-3">
-                <img alt="Profile-pic" class="profile-pic" src="./assets/Repo.png">
-                <h3 class="profile-name"></h3>
-                  <div class="followers-class">
-                      <p class="fas fa-users">
-                      </p> 
-                      <p class="follower">followers</p>
-                      </p>
-                      <p class="following">following</p>
-                      </p>
-                   </div>   
-            </div>
-       
-            <div class="rep col-md-9">
-                <p class="repositories-count"></p>
-                   <div class="repos">
-
-                   </div>
-            </div>
-       </div> 
-    </div> 
-    `;
+    const body=document.querySelector('body');  
+    const heading=document.createElement("div");
+    heading.setAttribute("class","heading");
+    const logo=document.createElement("img");
+    logo.setAttribute("src","./assets/Icon.png");
+    logo.setAttribute("alt","Icon");
+    const head=document.createElement("div");
+    head.setAttribute("class","head");
+    var h = document.createElement("H3");
+    var t = document.createTextNode("Repo-Hub");
+    h.appendChild(t);
+    const Theme=document.createElement("div");
+    Theme.setAttribute("class","Theme");
+    const Label=document.createElement("p");
+    Label.innerText="Theme";
+    const sun=document.createElement("p");
+    sun.setAttribute("class","sun far fa-sun sunenable");
+    sun.onclick=setSun;
+    const moon=document.createElement("p");
+    moon.setAttribute("class","moon fas fa-moon");
+    moon.onclick=setMoon;
 
 
+    const rep=document.createElement("div");
+    rep.setAttribute("class","rep container-fluid main");
+    const row=document.createElement("div");
+    row.setAttribute("class","row");
+    const profile=document.createElement("div");
+    profile.setAttribute("class","profile col-md-3");
+    const profilePic=document.createElement("img");
+    profilePic.setAttribute("class","profile-pic");
+    profilePic.setAttribute("src","./assets/Repo.png");
+    profilePic.setAttribute("alt","Profile-pic");
+    const profileName = document.createElement("H3");
+    profileName.setAttribute("class","profile-name");
+    const follow=document.createElement("div");
+    follow.setAttribute("class","followers-class");
+    const users=document.createElement("p");
+    users.setAttribute("class","fas fa-users");
+    const follower=document.createElement("p");
+    follower.setAttribute("class","follower");
+    follower.innerText="followers";
+    const following=document.createElement("p");
+    following.setAttribute("class","following");
+    following.innerText="following";
+    
+    const repp=document.createElement("div");
+    repp.setAttribute("class","rep col-md-9");
+    const repoCount=document.createElement("p");
+    repoCount.setAttribute("class","repositories-count");
+    const repos=document.createElement("div");
+    repos.setAttribute("class","repos");
+    
+
+    head.append(h);
+    Theme.append(Label,sun,moon);
+    heading.append(logo,head,Theme);
+    
+    follow.append(users,follower,following);
+    profile.append(profilePic,profileName,follow);
+
+    repp.append(repoCount,repos);
+    row.append(profile,repp);
+    rep.append(row);
+    document.body.append(heading,rep);
     getRepos();
-
 
 }
 async function getFollowers(){
@@ -64,7 +89,6 @@ async function getFollowers(){
 
 function createRepo(element){
     var background;
-    // console.log(element.full_name, element.owner.avatar_url,element.html_url,element.stargazers_count,element.forks_count,element.owner.login,element.language)
     switch(element.language)
     {
        case "JavaScript":background="background-color:#f1e05a";
@@ -82,29 +106,45 @@ function createRepo(element){
 
     const repos=document.querySelector(".repos");
     const outer=document.createElement("div");
-    outer.innerHTML=`
-    <div class="repositories">
-                  <p class="repo-icon fas fa-folder-open"></p>
-                  <a href=${element.html_url} class="repo-full-name">${element.full_name}</a>
-                  <div class="repo-info">
-                      <div>
-                        <p class="language-dot" style=${background}></p>
-                        <p class="language">${element.language}</p> 
-                      </div>
-                       <div>
-                        <p class="fork-icon fas fa-code-branch"></p>
-                        <p class="fork-count">${element.forks_count} forks</p>
-                       </div>
-                       <div>
-                        <p class="fork-icon far fa-star"></p>
-                        <p class="star-count">${element.stargazers_count} stars</p>
-                       </div>
-                    
-                  </div>
-            </div>
-            `;
+    const repositories=document.createElement("div");
+    repositories.setAttribute("class","repositories");
+    const repoIcon=document.createElement("p");
+    repoIcon.setAttribute("class","repo-icon fas fa-folder-open");   
+    const repoFullName=document.createElement("a");
+    repoFullName.setAttribute("class","repo-full-name");
+    repoFullName.setAttribute("href",`${element.html_url}`);
+    repoFullName.innerHTML=`${element.full_name}`;
+    const repoInfo=document.createElement("div");
+    repoInfo.setAttribute("class","repo-info");
+    const first=document.createElement("div");
+    const dot=document.createElement("p");
+    dot.setAttribute("class","language-dot"); 
+    dot.setAttribute("style",`${background}`);
+    const language=document.createElement("p");
+    language.setAttribute("class","language");
+    language.innerHTML=`${element.language}`;
+    const second=document.createElement("div");
+    const fork=document.createElement("p");
+    fork.setAttribute("class","fork-icon fas fa-code-branch"); 
+    const forkCount=document.createElement("p");
+    forkCount.setAttribute("class","fork-count");
+    forkCount.innerHTML=`${element.forks_count} forks`;
+    const third=document.createElement("div");
+    const star=document.createElement("p");
+    star.setAttribute("class","fork-icon far fa-star"); 
+    const starCount=document.createElement("p");
+    starCount.setAttribute("class","star-count");
+    starCount.innerHTML=`${element.stargazers_count} stars`;
 
-            repos.append(outer);
+
+
+    first.append(dot,language);
+    second.append(fork,forkCount);
+    third.append(star,starCount);
+    repoInfo.append(first,second,third);
+    repositories.append(repoIcon,repoFullName,repoInfo);
+     outer.append(repositories);
+    repos.append(outer);
 }
 
 async function getRepos(){
