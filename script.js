@@ -33,3 +33,22 @@ function viewRepos(){
   console.log(username);
 }
 
+
+window.onload =function initialHTML(){
+      document.body.innerHTML=`<div class="main">
+               <img src="./assets/Icon.jpg" alt="">
+               <h3>Repo-Hub</h3>
+                 <p class="tagline">Where you can find all your repositories.</p>
+                  <p class="matter">Enter your Github username to proceed</p>
+                <div class="form">
+                    <input class="username" type="text" class="username" placeholder="enter github username" required>
+                    <button onclick="viewRepos()" class="button">View Repositories</button>
+                </div>
+                <p class="error_message"></p>
+              </a>
+             </div>
+                `;
+
+}
+
+
