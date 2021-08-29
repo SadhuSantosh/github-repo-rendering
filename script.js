@@ -32,23 +32,41 @@ function viewRepos(){
     }
   console.log(username);
 }
-
-
 window.onload =function initialHTML(){
-      document.body.innerHTML=`<div class="main">
-               <img src="./assets/Icon.jpg" alt="">
-               <h3>Repo-Hub</h3>
-                 <p class="tagline">Where you can find all your repositories.</p>
-                  <p class="matter">Enter your Github username to proceed</p>
-                <div class="form">
-                    <input class="username" type="text" class="username" placeholder="enter github username" required>
-                    <button onclick="viewRepos()" class="button">View Repositories</button>
-                </div>
-                <p class="error_message"></p>
-              </a>
-             </div>
-                `;
-
-}
-
+  
+    const body=document.querySelector('body');  
+   const main=document.createElement("div");
+   main.setAttribute("class","main");
+   const logo=document.createElement("img");
+   logo.setAttribute("src","./assets/Icon.jpg");
+   var h = document.createElement("H3");
+   var t = document.createTextNode("Repo-Hub");
+    h.appendChild(t);
+    const tagline=document.createElement("p");
+   tagline.setAttribute("class","tagline");
+   tagline.innerText="Where you can find all your repositories.";
+   const matter=document.createElement("p");
+   matter.setAttribute("class","matter");
+   matter.innerText="Enter your Github username to proceed.";
+    const form=document.createElement("div");
+   form.setAttribute("class","form");
+   const username=document.createElement("input");
+   username.setAttribute("class","username");
+   username.setAttribute("placeholder","enter github username");
+   username.setAttribute("required","");
+   
+   const button=document.createElement("button");
+ button.onclick=viewRepos;
+   button.setAttribute("class","button");
+   button.innerText="View Repositories";
+   
+   const error_message=document.createElement("p");
+   error_message.setAttribute("class","error_message");
+   
+   
+   form.append(username,button);
+   main.append(logo,h,tagline,matter,form,error_message);
+   document.body.append(main);
+   
+ }
 
