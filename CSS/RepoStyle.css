@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+body{
+    font-family: 'Lato', sans-serif;
+}
+.main{
+    margin:0px;
+    font-family: 'Lato', sans-serif;
+}
+.profile{
+    border: 5px solid black;
+    font-family: 'Lato', sans-serif;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.repos{
+    border: 5px solid black;
+    font-family: 'Lato', sans-serif;
+}
+img{
+    max-height: 250px;
+    border-radius: 50%;
+}
+.followers-class{
+    margin:0px;
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+.repo-full-name{
+    text-decoration:none;
+    color: hsl(212deg 100% 67%);
+    font-weight: bold;
+}
+.repo-full-name:hover{
+    color: hsl(212deg 100% 67%);
+}
+.repositories{
+    font-family: 'Lato', sans-serif;
+    
+}
+.language-dot{
+    background-color: rgb(241 224 90);
+    height:10px;
+    width:10px;
+    border-radius: 50%;
+}
+.repo-info {
+   display:flex;
+   flex-direction: row;
+   align-items: center; 
+   gap:20px;
+   font-size: 13px;
+}
+.repo-info div{
+    display:flex;
+   flex-direction: row;
+   align-items: center; 
+   gap:5px;
+}
