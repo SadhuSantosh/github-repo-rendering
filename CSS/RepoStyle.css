@@ -48,7 +48,7 @@ img{
 }
 .repositories{
     font-family: 'Lato', sans-serif;
-    min-width:330px;
+    min-width:335px;
     border-bottom: 0.5px solid hsl(0deg 5% 92% / 46%);
     margin-top: 10px;
 }
