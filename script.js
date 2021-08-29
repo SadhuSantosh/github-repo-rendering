@@ -7,7 +7,7 @@ async function isPresent(name){
                throw new Error("Username not found, Enter a valid username");
            }
            else{
-            window.location.href = `http://localhost:5500/Repo.html?username=${name}`;
+            window.location.href = `https://repo-hub.netlify.app/Repo.html?username=${name}`;
            }
         })
         .catch((error)=>{
